@@ -23,3 +23,10 @@ test {
         }
     }
 }
+sourceSets {
+    main {
+        resources {
+            srcDir '../QA-Base/src/main/resources'
+        }
+    }
+}

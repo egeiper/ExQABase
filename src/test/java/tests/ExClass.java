@@ -1,15 +1,17 @@
 package tests;
 
 import org.egeiper.DriverHelper;
+import org.egeiper.DriverUtils;
+import org.egeiper.util.model.BrowserType;
+import org.egeiper.util.model.DriverType;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
 
 public class ExClass {
 
     @Test
     public void ege() {
-        DriverHelper.getDriver().get("https://google.com");
+        DriverUtils.getDriver(DriverType.LOCAL, BrowserType.CHROME).get("https://google.com");
+        DriverHelper
 
     }
 }
