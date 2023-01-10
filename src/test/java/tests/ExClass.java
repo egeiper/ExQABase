@@ -11,7 +11,5 @@ public class ExClass {
     @Test
     public void ege() {
         DriverUtils.getDriver(DriverType.LOCAL, BrowserType.CHROME).get("https://google.com");
-        DriverHelper
-
     }
 }

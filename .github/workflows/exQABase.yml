@@ -1,6 +1,13 @@
 name: Build Ex QA Base
 
 on:
+  workflow_dispatch:
+    inputs:
+      testname:
+        description: "Manual build"
+        required: true
+        default: ${TEST_NAME}
+        type: string
   push:
     branches: [ "master" ]
   pull_request:
@@ -11,7 +18,7 @@ permissions:
 
 jobs:
   build:
-    name: Build Project
+    name: Build and Test Project
     runs-on: ubuntu-latest
 
     steps:
@@ -24,7 +31,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          arguments: clean build
+          arguments: clean test --tests ${{ github.event.inputs.testname }}
 
   allure:
     name: Generate Allure Report
