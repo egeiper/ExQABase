@@ -1,0 +1,25 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+}
+plugins {
+    id 'java'
+}
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+dependencies {
+    implementation 'org.seleniumhq.selenium:selenium-java:4.7.2'
+    implementation 'org.testng:testng:7.4.0'
+    implementation 'org.egeiper.qaBase:QA-Base:1.0.7'
+}
+test {
+    useTestNG() {
+        if(project.hasProperty("useListeners")) {
+            listeners << 'org.egeiper.WebDriverListener'
+        }
+    }
+}
