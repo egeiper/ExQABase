@@ -1,4 +1,5 @@
 buildscript {
+    println project.projectDir.getAbsolutePath()
     repositories {
         mavenCentral()
     }
