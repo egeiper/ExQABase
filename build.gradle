@@ -16,7 +16,7 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.7.2'
     implementation 'org.testng:testng:7.4.0'
     if(project.hasProperty("actions")) {
-        implementation files (projectDir+"/build/libs/QA-Base-1.0.9.jar")
+        implementation files (project.getProjectDir()+"/build/libs/QA-Base-1.0.9.jar")
     }
     else {
         implementation 'org.egeiper:QA-Base:1.0.9'
