@@ -8,10 +8,6 @@ on:
         required: true
         default: ${TEST_NAME}
         type: string
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
 permissions:
   contents: read
