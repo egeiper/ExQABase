@@ -29,8 +29,8 @@ jobs:
         uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
           command: cp
-          source: s3://maven.egeiper/org/egeiper/QA-Base/1.0.9/QA-Base-1.0.9.jar
-          destination: build/libs
+          source: s3://maven.egeiper/org/egeiper/QA-Base
+          destination: ./build/libs
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: us-central-1
