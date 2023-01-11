@@ -35,8 +35,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-central-1
           
-      - name: Run command
-        run: cd ~/build/libs && ls
+
       - name: Run command2
         run: cd ./build/libs && ls
 
