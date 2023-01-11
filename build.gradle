@@ -1,9 +1,10 @@
 buildscript {
     repositories {
         mavenCentral()
-        mavenLocal()
     }
 }
+
+
 plugins {
     id 'java'
 }
@@ -14,19 +15,19 @@ repositories {
 dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.7.2'
     implementation 'org.testng:testng:7.4.0'
-    implementation 'org.egeiper.qaBase:QA-Base:1.0.7'
+    if(project.hasProperty("actions")) {
+        implementation files ("build/libs/QA-Base:1.0.9")
+    }
+    else {
+        implementation 'org.egeiper:QA-Base:1.0.9'
+    }
+
+
 }
 test {
     useTestNG() {
         if(project.hasProperty("useListeners")) {
             listeners << 'org.egeiper.WebDriverListener'
-        }
-    }
-}
-sourceSets {
-    main {
-        resources {
-            srcDir '../QA-Base/src/main/resources'
         }
     }
 }

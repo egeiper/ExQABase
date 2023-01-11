@@ -28,10 +28,21 @@ jobs:
         with:
           java-version: '11'
           distribution: 'temurin'
+
+      - name: Download Artifacts from S3
+      - uses: keithweaver/aws-s3-github-action@v1.0.0
+        with:
+        command: cp
+        source: s3://maven.egeiper/org/egeiper/QA-Base/1.0.9/QA-Base-1.0.9.jar
+        destination: build/libs
+        aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws_region: us-central-1
+
       - name: Build with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
-          arguments: clean test --tests ${{ github.event.inputs.testname }}
+          arguments: clean test -Pactions --tests ${{ github.event.inputs.testname }}
 
   allure:
     name: Generate Allure Report
