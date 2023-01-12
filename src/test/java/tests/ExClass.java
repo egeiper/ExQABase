@@ -1,6 +1,5 @@
 package tests;
 
-
 import org.egeiper.DriverUtils;
 import org.egeiper.util.model.BrowserType;
 import org.egeiper.util.model.DriverType;
@@ -12,6 +11,9 @@ public class ExClass {
 
     @Test
     public void ege() {
-        Assert.assertTrue(true);
+        WebDriver driver =DriverUtils.getDriver(DriverType.REMOTE, BrowserType.CHROME);
+        driver.get("https://google.com");
+        driver.quit();
+
     }
 }
