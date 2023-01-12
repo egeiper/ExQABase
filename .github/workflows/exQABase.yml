@@ -43,6 +43,7 @@ jobs:
           arguments: clean test -Pactions --tests ${{ github.event.inputs.testname }}
   allure:
     name: Generate Allure Report
+    if: always()
     needs: build
     runs-on: ubuntu-latest
     steps:
