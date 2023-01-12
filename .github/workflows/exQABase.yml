@@ -44,6 +44,7 @@ jobs:
           arguments: test -Pactions --tests ${{ github.event.inputs.testname }}
   allure:
     name: Generate Allure Report
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
