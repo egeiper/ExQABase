@@ -11,7 +11,7 @@ public class ExClass {
 
     @Test
     public void ege() {
-        Assert.assertTrue(true);
+        Assert.assertTrue(false);
 
     }
 }
