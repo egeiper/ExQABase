@@ -11,10 +11,9 @@ on:
 
 permissions:
   contents: read
-  permissions:
-    pull-requests: write
-    issues: write
-    repository-projects: write
+  pull-requests: write
+  issues: write
+  repository-projects: write
 
 jobs:
   build:
