@@ -10,7 +10,7 @@ on:
         type: string
 
 permissions:
-  contents: read/write
+  contents: write
   pull-requests: read/write
   issues: read/write
   repository-projects: write
