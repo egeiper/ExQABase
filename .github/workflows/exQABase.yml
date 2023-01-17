@@ -40,7 +40,5 @@ jobs:
       - name: Check files
         run: ls
       - name: Check files2
-        run: cd target
-      - name: Check files3
-        run: ls
+        run: cd target && ls
         
