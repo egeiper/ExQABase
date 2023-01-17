@@ -38,7 +38,10 @@ jobs:
           aws_region: eu-central-1
 
       - name: Check files2
-        run: find ~/ -type f -name "QA-Base-1.1.1.jar"
+        run: find ~/ -type f -name "QA-Base-1.1.1.jar" && pwd
       - name: Check files3
-        run: find "$(cd ..; pwd)" -name "QA-Base-1.1.1.jar"
+        run: find "$(cd ..; pwd)" -name "QA-Base-1.1.1.jar" && pwd
+      - name: Check files 4
+        run: find "$(pwd -P)" -name "QA-Base-1.1.1.jar" && pwd
+        
         
