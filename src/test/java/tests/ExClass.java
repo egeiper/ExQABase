@@ -14,7 +14,7 @@ public class ExClass {
 
     @Test
     public void ege() {
-        System.out.println(ParameterStoreUtils.get("ExampleParameter"));
+        System.out.println(PropertyUtils.getProperty("config.properties","awsRegion"));
 
     }
 }
