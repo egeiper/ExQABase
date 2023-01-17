@@ -1,13 +1,16 @@
 package tests;
 
-import org.egeiper.ParameterStoreUtils;
+
+
+import org.egeiper.DriverUtils;
+import org.egeiper.util.model.BrowserType;
+import org.egeiper.util.model.DriverType;
 import org.testng.annotations.Test;
 
 public class ExClass {
 
     @Test
     public void ege() {
-        System.out.println(ParameterStoreUtils.get("ExampleParameter"));
-
+        DriverUtils.getDriver(DriverType.LOCAL, BrowserType.CHROME).get("https://google.com");
     }
 }
