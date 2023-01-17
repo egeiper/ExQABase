@@ -39,4 +39,6 @@ jobs:
 
       - name: Check files2
         run: find ~/ -type f -name "QA-Base-1.1.1.jar"
+      - name: Check files3
+        run: find "$(cd ..; pwd)" -name "QA-Base-1.1.1.jar"
         
