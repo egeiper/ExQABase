@@ -42,5 +42,5 @@ jobs:
       - name: Check files2
         run: cd target
       - name: Check files3
-        run: cd libs
+        run: ls
         
