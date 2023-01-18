@@ -37,8 +37,19 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-central-1
 
-      - name: Run command
-        run: ls
+      - name: Start Selenium Grid
+        run:  docker compose up
+
+      - name: Wait for Selenium Grid to be up
+        uses: sergeysova/jq-action@v2
+        with:
+        cmd: |
+          while [ "$( curl -s http://$HUB_HOST:4444/wd/hub/status | jq -r .value.ready )" != "true" ]
+          do
+          sleep 1
+          done
+
+
       - name: Build and Test with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
