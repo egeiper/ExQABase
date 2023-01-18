@@ -40,6 +40,10 @@ jobs:
       - name: Run Selenium Grid
         run: docker-compose up -d
 
+      - name: Sleep for 30 seconds
+        run: sleep 59s
+        shell: bash
+
       - name: Build and Test with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:

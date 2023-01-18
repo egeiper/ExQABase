@@ -13,11 +13,6 @@ public class ExClass {
 
     static ThreadLocal<WebDriver> driver=new ThreadLocal<>();
 
-    @BeforeClass
-    public void before() throws MalformedURLException {
-        ChromeOptions options = new ChromeOptions();
-        driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options));
-    }
 
     @Test
     public void testing() throws MalformedURLException, InterruptedException {
