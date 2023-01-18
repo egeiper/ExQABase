@@ -17,7 +17,7 @@ public class ExClass {
     @Test
     public void testing() throws MalformedURLException, InterruptedException {
         ChromeOptions options = new ChromeOptions();
-
+        System.out.println(1);
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options));
 
         driver.get().get("https://google.com");
@@ -27,7 +27,7 @@ public class ExClass {
     @Test
     public void testing2() throws MalformedURLException, InterruptedException {
         ChromeOptions options = new ChromeOptions();
-
+        System.out.println(2);
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options));
 
         driver.get().get("https://google.com");
@@ -38,6 +38,7 @@ public class ExClass {
     @Test
     public void testing3() throws MalformedURLException, InterruptedException {
         ChromeOptions options = new ChromeOptions();
+        System.out.println(3);
 
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options));
 
@@ -49,6 +50,7 @@ public class ExClass {
     @Test
     public void testing4() throws MalformedURLException, InterruptedException {
         ChromeOptions options = new ChromeOptions();
+        System.out.println(4);
 
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options));
 
@@ -60,6 +62,7 @@ public class ExClass {
     @Test
     public void testing5() throws MalformedURLException, InterruptedException {
         ChromeOptions options = new ChromeOptions();
+        System.out.println(5);
 
         driver.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),options));
 
