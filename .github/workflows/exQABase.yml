@@ -36,6 +36,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
+      - name: Run Docker Selenium
+        run: docker run selenium/standalone-chrome:latest
+
       - name: Download Artifacts from S3
         uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
