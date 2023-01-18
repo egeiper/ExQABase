@@ -1,7 +1,7 @@
 version: "3"
 services:
   chrome:
-    image: seleniarm/node-chromium:latest
+    image: selenium/node-chrome:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -12,7 +12,7 @@ services:
       - SE_NODE_MAX_SESSIONS=1
 
   selenium-hub:
-    image: seleniarm/hub:latest
+    image: selenium/hub:latest
     container_name: selenium-hub
     ports:
       - "4442:4442"
