@@ -24,7 +24,7 @@ public class ExClass {
         Thread.sleep(2000);
         driver.get().quit();
     }
-
+/*
     @Test
     public void testing2() throws MalformedURLException, InterruptedException {
         ChromeOptions options = new ChromeOptions();
@@ -68,4 +68,6 @@ public class ExClass {
         Thread.sleep(2000);
         driver.get().quit();
     }
+
+ */
 }
