@@ -37,13 +37,10 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-central-1
 
-      - name: Start Selenium Grid
-        run:  docker compose up
-
-      - name: Wait for Selenium Grid to be up
-        uses: sergeysova/jq-action@v2
+      - name: Run Selenium Grid
+      - uses: isbang/compose-action@v1.4.1
         with:
-          cmd: sh healthcheck.sh
+          compose-file: "./docker-compose.yml"
 
 
       - name: Build and Test with Gradle
