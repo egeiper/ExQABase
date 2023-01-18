@@ -15,13 +15,13 @@ permissions:
 
 
 jobs:
+  selenium:
+    - name: Run Selenium Grid
+      run: docker-compose up -d --scale chrome=2
+
   build:
     name: Build and Test Project
     runs-on: ubuntu-latest
-
-    services:
-      selenium:
-        image: selenium/standalone-chrome:latest
 
     steps:
       - uses: actions/checkout@v3
@@ -36,8 +36,7 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
-      - name: Run Docker Selenium
-        run: docker run selenium/standalone-chrome:latest
+
 
       - name: Download Artifacts from S3
         uses: keithweaver/aws-s3-github-action@v1.0.0
