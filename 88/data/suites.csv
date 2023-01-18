@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Sun Jan 01 12:47:54 GMT 2023","Sun Jan 01 12:47:55 GMT 2023","29","Gradle suite","Gradle test","ExClass","ExClass","test","test",""
+"passed","Sun Jan 01 13:55:20 GMT 2023","Sun Jan 01 13:55:23 GMT 2023","2808","Gradle suite","Gradle test","ExClass","ExClass","ege","ege",""
+"broken","Mon Jan 02 10:06:13 GMT 2023","Mon Jan 02 10:06:13 GMT 2023","4","Gradle suite","Gradle test","tests.ExClass","tests.ExClass","ege","ege",""
