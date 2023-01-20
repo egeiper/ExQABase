@@ -48,7 +48,7 @@ jobs:
       - name: Build and Test With Docker
         run: docker compose -f docker-compose.withTests.yml up -d
 
-      - name: Close Docker
+      - name: Close Container
         run: docker compose -f docker-compose.withTests.yml down
 
 
