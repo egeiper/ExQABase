@@ -41,7 +41,7 @@ jobs:
           aws_region: eu-central-1
 
       - name: Start Selenium Hub and Nodes
-        run: docker compose -f docker-compose.withoutTests.yml
+        run: docker compose -f docker-compose.withoutTests.yml up
 
       - name: Check if hub and node is ready
         run: sh ./shFiles/healthcheckWithoutExecution.sh
