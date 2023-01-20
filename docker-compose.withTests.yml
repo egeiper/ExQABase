@@ -2,7 +2,7 @@
 version: "3"
 services:
   chrome:
-    image: seleniarm/node-chromium:latest
+    image: selenium/node-chrome:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -14,8 +14,9 @@ services:
       - SE_NODE_MAX_INSTANCES=1
     deploy:
       replicas: 4
+
   selenium-hub:
-    image: seleniarm/hub
+    image: selenium/hub
     container_name: selenium-hub
     ports:
       - "4442:4442"
@@ -28,6 +29,7 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - MODULE=firstTest.xml
+
     volumes:
       - ./allure-results:/usr/share/alpineDirectory/allure-results
 
@@ -38,5 +40,6 @@ services:
       environment:
         - HUB_HOST=selenium-hub
         - MODULE=secondTest.xml
+
       volumes:
         - ./allure-results:/usr/share/alpineDirectory/allure-results
