@@ -66,17 +66,9 @@ jobs:
       - name: Close Selenium Hub and Nodes
         run: docker compose -f docker-compose.withoutTests.yml down
 
-    upload_allure_report:
-        if: always()
-        needs: build
-        name: Upload Allure Report
-        runs-on: ubuntu-latest
+      - name: List folders
+        run: ls
 
-        steps:
-          - uses: actions/download-artifact@v2
-            with:
-              name: allure-report
-              path: /${{ github.workspace }}/build/allure-results/
 
   allure:
     name: Generate Allure Report
