@@ -43,6 +43,17 @@ jobs:
       - name: Build and Test With Docker
         run: docker compose -f docker-composeWithTests.yml
 
+  get_report_from_docker:
+    allure:
+      image: "frankescobar/allure-docker-service"
+      environment:
+        CHECK_RESULTS_EVERY_SECONDS: 1
+        KEEP_HISTORY: 1
+      ports:
+        - "5050:5050"
+      volumes:
+        - ${PWD}/allure-results:/app/allure-results
+
   allure:
     name: Generate Allure Report
     if: always()
