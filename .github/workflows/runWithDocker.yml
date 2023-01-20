@@ -3,10 +3,16 @@ name: Run with Docker
 on:
   workflow_dispatch:
     inputs:
-      testname:
-        description: "Manual build"
+      test_name:
+        description: "Give specific test name or leave empty"
         required: true
         default: "\"tests*\""
+        type: string
+
+      qa_base_version:
+        description: "QA-Base version to fetch from S3"
+        required: true
+        default: "1.1.3"
         type: string
 
 permissions:
@@ -33,7 +39,7 @@ jobs:
         uses: keithweaver/aws-s3-github-action@v1.0.0
         with:
           command: cp
-          source: s3://maven.egeiper/org/egeiper/QA-Base/1.1.1/QA-Base-1.1.1.jar
+          source: s3://maven.egeiper/org/egeiper/QA-Base/${{ github.event.inputs.qa_base_version }}/QA-Base-${{ github.event.inputs.qa_base_version }}.jar
           destination: ./
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
