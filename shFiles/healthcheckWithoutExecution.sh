@@ -10,4 +10,4 @@ while [ "$( curl -s http://localhost:4444/wd/hub/status | jq -r .value.ready )" 
 do
 	sleep 1
 done
-exit 1
+exit 0
