@@ -7,7 +7,7 @@ on:
     inputs:
       test_name:
         description: "Give specific test name or leave empty"
-        required: true
+        required: false
         default: ${TEST_NAME}
         type: string
 
