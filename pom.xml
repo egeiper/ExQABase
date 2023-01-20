@@ -6,12 +6,47 @@
 
     <groupId>org.example</groupId>
     <artifactId>ExQABase</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-0</version>
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <build>
+        <finalName>selenium-docker</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 <dependencies>
     <dependency>
         <groupId>org.seleniumhq.selenium</groupId>
@@ -37,9 +72,9 @@
         <version>2.13.8</version>
     </dependency>
     <dependency>
-    <groupId>org.egeiper.qaBase</groupId>
+    <groupId>org.egeiper</groupId>
     <artifactId>QA-base</artifactId>
-    <version>1.0.7</version>
+    <version>1.1.1</version>
     </dependency>
 </dependencies>
 </project>

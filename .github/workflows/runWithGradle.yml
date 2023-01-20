@@ -22,17 +22,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      
-      - name: Start Selenium Hub/Node
-        run:  docker network create grid && docker run -d -p 4442-4444:4442-4444 --net grid --name selenium-hub selenium/hub:latest && docker run -d --net grid -e SE_EVENT_BUS_HOST=selenium-hub --shm-size="2g" -e SE_NODE_OVERRIDE_MAX_SESSIONS=true -e SE_NODE_MAX_SESSIONS=5 -e SE_NODE_MAX_INSTANCES=5 -e SE_EVENT_BUS_PUBLISH_PORT=4442 -e SE_EVENT_BUS_SUBSCRIBE_PORT=4443  selenium/node-chrome:latest
-
 
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
-
 
 
       - name: Download Artifacts from S3
@@ -45,10 +40,20 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-central-1
 
+      - name: Start Selenium Hub and Nodes
+        run: docker compose -f docker-compose.withoutTests.yml
+
+      - name: Check if hub and node is ready
+        run: sh ./shFiles/healthcheckWithoutExecution.sh
+
       - name: Build and Test with Gradle
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: clean test -Pactions --tests ${{ github.event.inputs.testname }}
+
+      - name: Close Selenium Hub and Nodes
+        run: docker compose -f docker-compose.withoutTests.yml down
+
   allure:
     name: Generate Allure Report
     if: always()
