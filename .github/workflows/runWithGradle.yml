@@ -1,6 +1,6 @@
 name: Run with Gradle
 env:
-  TEST_NAME: "tests*"
+  TEST_NAME: "\"tests*\""
   VERSION: "1.1.3"
 on:
   workflow_dispatch:
