@@ -40,10 +40,10 @@ jobs:
           aws_region: eu-central-1
 
       - name: Build and Test With Docker
-        run: docker compose -f docker-composeWithTests.yml up
+        run: docker compose -f docker-compose.WithTests.yml up
 
       - name: Close Docker
-        run: docker compose -f docker-composeWithTests.yml down
+        run: docker compose -f docker-compose.WithTests.yml down
 
 
   allure:
