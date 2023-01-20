@@ -1,4 +1,4 @@
-name: Run with Gradle
+name: Run with Docker
 
 on:
   workflow_dispatch:
