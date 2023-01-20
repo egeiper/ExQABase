@@ -6,7 +6,7 @@ on:
       testname:
         description: "Manual build"
         required: true
-        default: ${TEST_NAME}
+        default: "\"tests*\""
         type: string
 
 permissions:
