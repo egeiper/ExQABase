@@ -22,7 +22,7 @@ services:
       - "4443:4443"
       - "4444:4444"
   firstTest:
-    image: egeiper/exqabase
+    image: egeiper/test-base
     depends_on:
       - chrome
     environment:
@@ -32,7 +32,7 @@ services:
       - ./allure-results:/usr/share/alpineDirectory/allure-results
 
   secondTest:
-      image: egeiper/exqabase
+      image: egeiper/test-base
       depends_on:
         - chrome
       environment:
