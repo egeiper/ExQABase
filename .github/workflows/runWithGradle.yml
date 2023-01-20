@@ -7,13 +7,13 @@ on:
     inputs:
       test_name:
         description: "Give specific test name or leave empty"
-        required: false
+        required: true
         default: ${TEST_NAME}
         type: string
 
       qa_base_version:
         description: "QA-Base version to fetch from S3"
-        required: false
+        required: true
         default: ${VERSION}
         type: string
 
