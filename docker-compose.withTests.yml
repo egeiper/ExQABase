@@ -1,0 +1,42 @@
+# Dört node, her node'da bir browser instance'ı ve node başına max 1 session ve testler paralel.
+version: "3"
+services:
+  chrome:
+    image: seleniarm/node-chromium:latest
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+      - SE_NODE_MAX_SESSIONS=1
+      - SE_NODE_MAX_INSTANCES=1
+    deploy:
+      replicas: 4
+  selenium-hub:
+    image: seleniarm/hub
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+  firstTest:
+    image: egeiper/exqabase
+    depends_on:
+      - chrome
+    environment:
+      - HUB_HOST=selenium-hub
+      - MODULE=firstTest.xml
+    volumes:
+      - ./allure-results:/usr/share/alpineDirectory/allure-results
+
+  secondTest:
+      image: egeiper/exqabase
+      depends_on:
+        - chrome
+      environment:
+        - HUB_HOST=selenium-hub
+        - MODULE=secondTest.xml
+      volumes:
+        - ./allure-results:/usr/share/alpineDirectory/allure-results

@@ -1,4 +1,4 @@
-name: Build Ex QA Base
+name: Run with Gradle
 
 on:
   workflow_dispatch:
