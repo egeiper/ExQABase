@@ -1,20 +1,18 @@
 name: Run with Gradle
-env:
-  TEST_NAME: "\"tests*\""
-  VERSION: "1.1.3"
+
 on:
   workflow_dispatch:
     inputs:
       test_name:
         description: "Give specific test name or leave empty"
         required: true
-        default: ${TEST_NAME}
+        default: "\"tests*\""
         type: string
 
       qa_base_version:
         description: "QA-Base version to fetch from S3"
         required: true
-        default: ${VERSION}
+        default: "1.1.3"
         type: string
 
 permissions:
@@ -55,9 +53,15 @@ jobs:
         run: sh ./shFiles/healthcheckWithoutExecution.sh
 
       - name: Build and Test with Gradle
+        id: tests_run
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: clean test -Pactions --tests ${{ github.event.inputs.test_name }}
+        continue-on-error: true
+
+      - name: Check on failures
+        if: steps.tests_run.outcome != 'success'
+        run: exit 1
 
       - name: Close Selenium Hub and Nodes
         run: docker compose -f docker-compose.withoutTests.yml down
