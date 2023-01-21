@@ -23,7 +23,7 @@ services:
       - "4443:4443"
       - "4444:4444"
   firstTest:
-    image: egeiper/test-base
+    image: egeiper/test-base:amd64
     depends_on:
       - chrome
     environment:
@@ -34,7 +34,7 @@ services:
       - ./allure-results:/usr/share/alpineDirectory/allure-results
 
   secondTest:
-      image: egeiper/test-base
+      image: egeiper/test-base:amd64
       depends_on:
         - chrome
       environment:
