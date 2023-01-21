@@ -2,7 +2,7 @@
 version: "3"
 services:
   chrome:
-    image: selenium/node-chrome:latest
+    image: ${SELENIUM_PLATFORM}/${NODE_TYPE}:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -16,30 +16,28 @@ services:
       replicas: 4
 
   selenium-hub:
-    image: selenium/hub
+    image: ${SELENIUM_PLATFORM}/hub
     container_name: selenium-hub
     ports:
       - "4442:4442"
       - "4443:4443"
       - "4444:4444"
   firstTest:
-    image: egeiper/test-base:amd64
+    image: egeiper/test-base:${VERSION}
     depends_on:
       - chrome
     environment:
       - HUB_HOST=selenium-hub
       - MODULE=firstTest.xml
-
     volumes:
       - ./allure-results:/usr/share/alpineDirectory/allure-results
 
   secondTest:
-      image: egeiper/test-base:amd64
+      image: egeiper/test-base:${VERSION}
       depends_on:
         - chrome
       environment:
         - HUB_HOST=selenium-hub
         - MODULE=secondTest.xml
-
       volumes:
         - ./allure-results:/usr/share/alpineDirectory/allure-results
