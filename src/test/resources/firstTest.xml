@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite" parallel="tests">
-    <test verbose="2" name="ExClass-1 Tests">
+<suite name="All Test Suite">
+    <test verbose="2" name="ExClass-1 Tests" parallel="classes">
         <classes>
             <class name="tests.ExClass1">
                 <methods>
@@ -13,7 +13,7 @@
         </classes>
     </test>
 
-    <test verbose="2" name="ExClass-2 Tests">
+    <test verbose="2" name="ExClass-2 Tests" parallel="classes">
         <classes>
             <class name="tests.ExClass2">
                 <methods>

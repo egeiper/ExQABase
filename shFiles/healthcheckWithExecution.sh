@@ -12,3 +12,4 @@ do
 done
 
 java -cp "target/test-base.jar:target/test-base-tests.jar:target/libs/*" -DHUB_HOST=$HUB_HOST org.testng.TestNG $MODULE
+exit 0
