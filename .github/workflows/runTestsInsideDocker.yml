@@ -1,14 +1,8 @@
-name: Run with Docker
+name: Run Tests inside Docker
 
 on:
   workflow_dispatch:
     inputs:
-      test_name:
-        description: "Give specific test name or leave empty"
-        required: true
-        default: "\"tests*\""
-        type: string
-
       qa_base_version:
         description: "QA-Base version to fetch from S3"
         required: true
