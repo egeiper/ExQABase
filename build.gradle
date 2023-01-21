@@ -3,8 +3,6 @@ buildscript {
         mavenCentral()
     }
 }
-
-
 plugins {
     id 'java'
 }
