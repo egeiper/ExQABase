@@ -46,7 +46,7 @@ jobs:
           aws_region: eu-central-1
 
       - name: Build and Test With Docker
-        run: docker compose --env-file .amd64.env -f docker-compose.withTests.yml up -d
+        run: docker compose --env-file .amd64.env -f docker-compose.withTests.yml up --exit-code-from secondTest
 
       - name: Close Container
         run: docker compose -f docker-compose.withTests.yml down
