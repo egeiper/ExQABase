@@ -28,4 +28,5 @@ test {
             listeners << 'org.egeiper.WebDriverListener'
         }
     }
+    maxParallelForks = 4
 }
