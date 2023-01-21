@@ -4,25 +4,19 @@ import org.egeiper.WebDriverUtils;
 import org.egeiper.util.model.BrowserType;
 import org.egeiper.util.model.DriverType;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.*;
-
 import java.net.MalformedURLException;
-import java.net.URL;
 
 public class ExClass2 {
-
-
     String host="localhost";
     static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     @BeforeClass
-    public void startDriver() throws MalformedURLException {
+    public void startDriver() {
         if(System.getProperty("HUB_HOST") != null){
             host = System.getProperty("HUB_HOST");
         }
-        driver.set(new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"),new ChromeOptions()));
+        driver.set(WebDriverUtils.getRemoteDriver(DriverType.REMOTE, BrowserType.CHROME,host,"4444"));
     }
 
 
