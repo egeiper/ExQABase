@@ -48,7 +48,7 @@ jobs:
       - name: Build and Test With Docker
         run: docker compose --env-file .amd64.env -f docker-compose.withTests.yml up --exit-code-from secondTest
 
-      - name: Close Container
+      - name: Remove Containers
         run: docker compose -f docker-compose.withTests.yml down
 
 
