@@ -1,4 +1,3 @@
-# Dört node, her node'da bir browser instance'ı ve node başına max 1 session ve testler paralel.
 version: "3"
 services:
   chrome:
